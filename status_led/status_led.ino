@@ -22,27 +22,6 @@ void loop()
 
     int incoming_byte = Serial.parseInt();
     show_rgb(incoming_byte);
-
-        //switch (incoming_byte) {
-        //case 'R':
-        //    led_red();
-        //    break;
-        //case 'G':
-        //    led_green();
-        //    break;
-        //case 'B':
-        //    led_blue();
-        //    break;
-        //case 'O':
-        //    led_off();
-        //    break;
-        //default:
-        //    int rgb_value = incoming_byte;
-        //    showRGB(rgb_value);
-        //    break;
-        //}
-
-    //}
 }
 
 void led_off()
@@ -53,32 +32,11 @@ void led_off()
 }
 
 
-void led_red()
-{
-    digitalWrite(RED_PIN, HIGH);
-    digitalWrite(GREEN_PIN, LOW);
-    digitalWrite(BLUE_PIN, LOW);
-}
-
-
-void led_green()
-{
-    digitalWrite(RED_PIN, LOW);
-    digitalWrite(GREEN_PIN, HIGH);
-    digitalWrite(BLUE_PIN, LOW);
-}
-
-
-void led_blue()
-{
-    digitalWrite(RED_PIN, LOW);
-    digitalWrite(GREEN_PIN, LOW);
-    digitalWrite(BLUE_PIN, HIGH);
-}
-
-
 void show_rgb(int color)
 {
+    // 0 and 767 is pure red
+    // 255 is pure green
+    // 511 is pure blue
     int red_intensity;
     int green_intensity;
     int blue_intensity;
@@ -91,6 +49,7 @@ void show_rgb(int color)
     }
     else if (color <= 511)
     {
+        //
         red_intensity = 0;
         green_intensity = 255 - (color - 256);
         blue_intensity = (color - 256);
