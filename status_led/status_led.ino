@@ -34,14 +34,20 @@ void led_off()
 
 void show_rgb(int color)
 {
-    // 0 and 767 is pure red
-    // 255 is pure green
-    // 511 is pure blue
     int red_intensity;
     int green_intensity;
     int blue_intensity;
 
-    if (color <= 255)
+    // 000 is off 
+    // 255 is pure green
+    // 511 is pure blue
+    // 767 is pure red
+
+    if (color == 000)
+    {
+        led_off();
+    }
+    else if (color <= 255)
     {
         red_intensity = 255 - color;
         green_intensity = color;
@@ -49,7 +55,6 @@ void show_rgb(int color)
     }
     else if (color <= 511)
     {
-        //
         red_intensity = 0;
         green_intensity = 255 - (color - 256);
         blue_intensity = (color - 256);
