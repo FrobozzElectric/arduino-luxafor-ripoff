@@ -19,7 +19,7 @@ Example colors:
     767 = red again
 """ % (sys.argv[0])
 
-if len(sys.argv) < 3:
+if len(sys.argv) < 3 or len(sys.argv[2]) != 3:
     print(usage)
     sys.exit(1)
 
