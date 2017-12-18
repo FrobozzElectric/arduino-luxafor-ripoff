@@ -11,6 +11,7 @@ void setup()
     pinMode(BLUE_PIN, OUTPUT);
 
     Serial.begin(9600);
+    Serial.setTimeout(50);
 
     led_off();
 }
