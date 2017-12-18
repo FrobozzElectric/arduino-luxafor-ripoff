@@ -26,5 +26,7 @@ if len(sys.argv) < 3 or len(sys.argv[2]) != 3:
 port = str(sys.argv[1])
 arduino = Serial(port, 9600, timeout=.1)
 
-time.sleep(2)
+while not arduino.writable():
+    pass
+
 arduino.write(sys.argv[2].encode())
