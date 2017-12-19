@@ -12,8 +12,6 @@ void setup()
 
     Serial.begin(9600);
     Serial.setTimeout(50);
-
-    led_off();
 }
 
 
@@ -24,14 +22,6 @@ void loop()
     int incoming_byte = Serial.parseInt();
     show_rgb(incoming_byte);
 }
-
-void led_off()
-{
-    digitalWrite(RED_PIN, LOW);
-    digitalWrite(GREEN_PIN, LOW);
-    digitalWrite(BLUE_PIN, LOW);
-}
-
 
 void show_rgb(int color)
 {
@@ -46,7 +36,9 @@ void show_rgb(int color)
 
     if (color == 000)
     {
-        led_off();
+        red_intensity = 0;
+        green_intensity = 0;
+        blue_intensity = 0;
     }
     else if (color <= 255)
     {
